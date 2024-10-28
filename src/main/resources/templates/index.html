@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>Movies</title>
+</head>
+<body>
+    <h1> Movie List </h1>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Runtime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="movie : ${movies}" >
+                <th scope="row" th:text=${movie.title}></th>
+                <td th:text=${movie.releaseDate}></td>
+                <td th:text=${movie.runtime}></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
