@@ -1,5 +1,6 @@
 package com.corndel.framerate;
 
+import com.corndel.framerate.controllers.ReviewController;
 import com.corndel.framerate.repositories.MovieRepository;
 import com.corndel.framerate.controllers.MovieController;
 import org.thymeleaf.TemplateEngine;
@@ -33,6 +34,11 @@ public class App {
 
     app.get("/", MovieController::getAllMovies);
     app.get("/movie/{movieId}", MovieController::getMovieById);
+    app.get("/review/{movieId}", ctx -> {
+        ctx.render("post_review");
+    });
+    app.post("/submit", ReviewController::postNewReview);
+
 
     return app;
   }
