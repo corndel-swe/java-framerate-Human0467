@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 2 | Exercise 3</title>
+</head>
+
+<body>
+<h1>Submit your details</h1>
+<!--
+TODO:
+- create a form which posts to the '/submit' endpoint
+- it should send a "name" and an "email"
+-->
+<form action="/submit" method="POST">
+  <label for="name">Review</label>
+  <input type="text" name="name" id="name" />
+  <p></p>
+  <label for="rating">Rating (0-10):</label>
+  <input type="number" id="rating" name="rating" min="0" max="10" />
+
+  <button type="submit">Submit it!</button>
+</form>
+</body>
+</html>

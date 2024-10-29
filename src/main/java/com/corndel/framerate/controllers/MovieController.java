@@ -5,13 +5,14 @@ import java.util.Map;
 
 import com.corndel.framerate.models.Movie;
 import com.corndel.framerate.repositories.MovieRepository;
+import com.corndel.framerate.repositories.ReviewRepository;
 import io.javalin.http.*;
 
 public class MovieController {
 
-    public static void renderMovies(Context ctx){
-        ctx.render("/templates/index");
-    }
+//    public static void renderMovie(Context ctx){
+//        ctx.render("/movie_details", Map.of("movie", movie)).status(200);
+//    }
 
     public static void getAllMovies(Context ctx) throws SQLException {
         var movies = MovieRepository.findAll();
@@ -29,10 +30,14 @@ public class MovieController {
 
         int id = Integer.parseInt(ctx.pathParam("movieId"));
         Movie movie = MovieRepository.findById(id);
+        var reviews = ReviewRepository.findByMovie(id);
+        System.out.println(reviews.get(0).toString());
         if(movie!=null) {
-            ctx.render("/movie_details", Map.of("movie", movie)).status(200);
+            ctx.render("/movie_details", Map.of("movie", movie, "reviews", reviews)).status(200);
         }else{
             throw new NotFoundResponse("No product with that ID");
         }
     }
+
+
 }

@@ -12,7 +12,12 @@
     <li th:text="${movie.releaseDate}"></li>
     <li th:text="${movie.ageRating}"></li>
     <li th:text="${movie.genres}"></li>
-    <li th:text="${movie.runtime}"}></li>
+    <li th:text="${movie.runtime}"></li>
 </ul>
+<hr>
+<p th:text="${reviews}"></p>
+    <ul>
+        <li th:each="review : ${reviews}" th:text=${review.rating}></li>
+    </ul>
 </body>
 </html>
