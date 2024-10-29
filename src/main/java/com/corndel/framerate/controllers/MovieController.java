@@ -30,7 +30,7 @@ public class MovieController {
         int id = Integer.parseInt(ctx.pathParam("movieId"));
         Movie movie = MovieRepository.findById(id);
         if(movie!=null) {
-            ctx.json(movie).status(200);
+            ctx.render("/movie_details", Map.of("movie", movie)).status(200);
         }else{
             throw new NotFoundResponse("No product with that ID");
         }
