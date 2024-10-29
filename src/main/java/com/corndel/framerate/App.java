@@ -1,5 +1,7 @@
 package com.corndel.framerate;
 
+import com.corndel.framerate.repositories.MovieRepository;
+import com.corndel.framerate.controllers.MovieController;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
@@ -29,9 +31,8 @@ public class App {
           config.fileRenderer(new JavalinThymeleaf(engine));
         });
 
-    app.get("/", ctx -> {
-      ctx.result("Hello, World!");
-    });
+    app.get("/", MovieController::getAllMovies);
+    app.get("/movie/{movieId}", MovieController::getMovieById);
 
     return app;
   }
